@@ -47,7 +47,7 @@ contract SVGNFT is ERC721URIStorage {
         pure
         returns (string memory)
     {
-        string memory baseURL = "data:application/json;base64";
+        string memory baseURL = "data:application/json;base64,";
         return
             string(
                 abi.encodePacked(
