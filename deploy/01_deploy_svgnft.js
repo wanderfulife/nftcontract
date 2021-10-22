@@ -1,7 +1,5 @@
-const { ENGINE_METHOD_CIPHERS } = require("constants");
 const fs = require("fs");
-const { ethers } = require("hardhat");
-const { hrtime } = require("process");
+let { networkConfig } = require("../helper-hardhat-config");
 
 module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deploy, log } = deployments;
@@ -25,5 +23,8 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     svgNFTContract.interface,
     signer
   );
-  const networkName = networkConfig;
+  const networkName = networkConfig[chaindId]["name"];
+  log(
+    `Verify with: \n npx hardhat verify --network ${networkName} ${svgNFT.address}`
+  );
 };
